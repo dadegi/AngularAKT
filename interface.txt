@@ -1,0 +1,53 @@
+INTERFACCIA
+export interface Logger {
+	log(message: string): void;
+}
+
+SERVICE
+import { Injectable } from '@angular/core';
+import { Logger } from './interface/logger.interface';
+
+@Injectable ({
+	providedIn: 'root',
+})
+
+export class ConsoleService implements Logger {
+	log(message: string): void {
+		console.log(`${message}`);
+	}
+}
+
+TOKEN.TS
+import { InjectionToken } from '@angular/core';
+import { Logger } from './interface/logger.interface';
+
+export const LOGGER_TOKEN = new InjectionToken<Logger>('Logger');
+
+APP.MODULE
+Import { NgModule } from '@angular/core';
+....
+import { ConsoleService } from './service/console-service.service';
+import { LOGGER_TOKEN } from './logger.token';
+
+@NgModule({
+	.....
+	providers: [{ provide: LOGGER_TOKEN, useClass: ConsoleService }
+})
+
+COMPONENT
+import { Component, Inject } from '@angular/core';
+import { LOGGER_TOKEN } from './logger.token';
+import { Logger } from './interface/logger.interface';
+
+@Component({
+	selector: 'app-comp',
+	template: `<button (click)="log()">CLICK</button>`,
+})
+
+export class CompComponent {
+	constructor(@Inject(LOGGER_TOKEN) private logger: Logger) {}
+
+	logMessage() {
+		this.logger.log('Messaggio di testo');
+	}
+}

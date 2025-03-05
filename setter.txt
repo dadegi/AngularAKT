@@ -1,0 +1,34 @@
+import { Component, Inject, Injectable, Optional } from '@angular/core';
+
+@Injectabler({
+	providedIn: 'root',
+})
+
+export class MyService {
+	getData() {
+		return 'Dati restituiti dal service';
+	}
+}
+
+@Component ({
+	selector: 'app-comp',
+	template: `<h1>{{ message }}</h1>
+})
+
+export class CompComponent {
+	message = '';
+
+	constructor() {
+		console.log('Costruttore chiamato');
+	}
+
+	// Setter
+	@Optional()
+	@Inject(MyService)
+	set mySrv(service: MyService | null) {
+		console.log('Setter chiamato');
+		if (service) {
+			this.message = service.getData();
+		}
+	}
+}
