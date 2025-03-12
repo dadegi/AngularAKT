@@ -1,0 +1,10 @@
+<h2>Componente padre</h2>
+
+<!-- Inserimento del componente figlio -->
+<app-child-comp (formSubmitted)="handleFormData($event)"></app-child-comp>
+
+<!-- Dati ricevuti dal componente figlio -->
+<div *ngIf="receiveData">
+    <p><strong>Nome: </strong>{{ receiveData.name }}</p>
+    <p><strong>Email: </strong>{{ receiveData.email }}</p>
+</div>
