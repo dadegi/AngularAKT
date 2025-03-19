@@ -1,0 +1,16 @@
+<div class="alert alert-info mb-3">
+    <h4>Categoria: {{ category }}</h4>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-3" *ngFor="let product of filteredProducts">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ product.price | currency: 'EUR' }}</h6>
+                <p class="card-text">{{ product.description }}</p>
+                <a [routerLink]="['/products', product.id]" class="btn btn-primary">Dettagli</a>
+            </div>
+        </div>
+    </div>
+</div>

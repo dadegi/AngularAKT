@@ -1,0 +1,28 @@
+<div *ngIf="!founded">
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</div>
+<div *ngIf="founded">
+    <div *ngIf="product; else notFound">
+        <div class=" card">
+            <div class="card-header">
+                <h2>{{ product.name }}</h2>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ product.price | currency: 'EUR' }}</h5>
+                <p class="card-text">Categoria: {{ product.category }}</p>
+                <p class="card-text">{{ product.description }}</p>
+                <a [routerLink]="['/products']" class="btn btn-primary">Torna alla lista prodotti</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #notFound>
+    <div class="d-flex justify-content-center">
+        <h2>Prodotto non trovato</h2>
+    </div>
+</ng-template>
