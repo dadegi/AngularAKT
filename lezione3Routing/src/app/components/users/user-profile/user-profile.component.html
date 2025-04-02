@@ -1,0 +1,12 @@
+<div *ngIf="user">
+    <h3>Profilo utente</h3>
+    <div class="mb-3">
+        <strong>{{ user.name }} {{ user.surname }}</strong>
+    </div>
+    <div class="mb-3">
+        <strong>Età: {{ user.age }}</strong>
+    </div>
+    <div class="mb-3">
+        <strong>Ruolo: {{ user.role }}</strong>
+    </div>
+</div>

@@ -12,5 +12,14 @@ export const dataResolver: ResolveFn<boolean> = (
     state: RouterStateSnapshot
 ): Observable<any> => {
     const dataSrv = inject(DataService);
+
+    // Determino quali dati fornire in base all'URL
+    if (state.url.includes('/products')) {
+        return dataSrv.getProducts();
+    } else if (state.url.includes('/users')) {
+        return dataSrv.getUsers();
+    }
+
+    // Default
     return dataSrv.getProducts();
 };

@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { dataResolver } from './services/data.resolver';
 
 export const routes: Routes = [
     {
@@ -11,7 +12,7 @@ export const routes: Routes = [
     {
         path: 'products',
         loadChildren: () =>
-            import('./routes/product.routes').then((m) => m.productRoutes)
+            import('./routes/product.routes').then((m) => m.productRoutes),
     },
     {
         path: 'about',
@@ -19,6 +20,12 @@ export const routes: Routes = [
             import('./components/about/about.component').then(
                 (m) => m.AboutComponent
             ),
+    },
+    {
+        path: 'users',
+        loadChildren: () =>
+            import('./routes/user.routes').then((m) => m.userRoutes),
+        resolve: { users: dataResolver },
     },
     {
         path: '**',

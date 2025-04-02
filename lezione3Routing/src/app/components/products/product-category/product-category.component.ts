@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DataService } from '../../../services/data.service';
 import { switchMap } from 'rxjs/operators';
@@ -14,8 +14,14 @@ import { switchMap } from 'rxjs/operators';
 export class ProductCategoryComponent implements OnInit {
     category: string = '';
     filteredProducts: any[] = [];
+    categories: any[] = [];
+    founded: boolean = false;
 
-    constructor(private route: ActivatedRoute, private dataSrv: DataService) {}
+    constructor(
+        private route: ActivatedRoute,
+        private dataSrv: DataService,
+        private router: Router
+    ) {}
 
     ngOnInit(): void {
         this.route.paramMap
@@ -27,6 +33,12 @@ export class ProductCategoryComponent implements OnInit {
             )
             .subscribe((products) => {
                 this.filteredProducts = products;
+                if (this.filteredProducts.length === 0) {
+                    this.founded = false;
+                    this.router.navigate(['/**']);
+                } else {
+                    this.founded = true;
+                }
             });
     }
 }

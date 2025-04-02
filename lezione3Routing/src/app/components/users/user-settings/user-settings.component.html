@@ -1,0 +1,26 @@
+<div *ngIf="user">
+    <h3>Impostazioni</h3>
+    <div class="mb-3">
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="notifications" checked>
+            <label class="form-check-label" for="notifications">Notifiche Email</label>
+        </div>
+    </div>
+    <div class="mb-3">
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="twoFactor" checked>
+            <label class="form-check-label" for="twoFactor">Autenticazione a due fattori</label>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="language">Lingua</label>
+        <select class="form-select" id="language">
+            <option value="" selected></option>
+            <option value="italian">Italiano</option>
+            <option value="english">Inglese</option>
+            <option value="french">Francese</option>
+            <option value="spanish">Spagnolo</option>
+        </select>
+    </div>
+    <button class="btn btn-success" disabled>Salva</button>
+</div>

@@ -38,8 +38,41 @@ export class DataService {
         },
     ];
 
+    // JSON utenti
+    private users = [
+        {
+            id: 1,
+            name: 'Mario',
+            surname: 'Rossi',
+            role: 'admin',
+            age: 37,
+        },
+        {
+            id: 2,
+            name: 'Nicola',
+            surname: 'Bianchi',
+            role: 'user',
+            age: 28,
+        },
+        {
+            id: 3,
+            name: 'Anna',
+            surname: 'Verdi',
+            role: 'admin',
+            age: 30,
+        },
+        {
+            id: 4,
+            name: 'Maria',
+            surname: 'Neri',
+            role: 'user',
+            age: 25,
+        },
+    ];
+
     constructor() {}
 
+    // Metodi funzionalità prodotti
     getProducts(): Observable<any[]> {
         return of(this.products).pipe(delay(500));
     }
@@ -52,5 +85,20 @@ export class DataService {
     getProductsByCategory(category: string): Observable<any[]> {
         const filtered = this.products.filter((el) => el.category === category);
         return of(filtered).pipe(delay(300));
+    }
+
+    getCategories(): Observable<any[]> {
+        const categories = this.products.map((product) => product.category);
+        return of(categories).pipe(delay(100));
+    }
+
+    // Metodi funzionalità utenti
+    getUsers(): Observable<any[]> {
+        return of(this.users).pipe(delay(500));
+    }
+
+    getUserById(id: number): Observable<any> {
+        const user = this.users.find((u) => u.id === id);
+        return of(user).pipe(delay(250));
     }
 }

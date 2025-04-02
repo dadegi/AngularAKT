@@ -6,7 +6,7 @@
     </div>
 </div>
 <div *ngIf="founded">
-    <div *ngIf="product; else notFound">
+    <div *ngIf="product">
         <div class=" card">
             <div class="card-header">
                 <h2>{{ product.name }}</h2>
@@ -20,9 +20,3 @@
         </div>
     </div>
 </div>
-
-<ng-template #notFound>
-    <div class="d-flex justify-content-center">
-        <h2>Prodotto non trovato</h2>
-    </div>
-</ng-template>

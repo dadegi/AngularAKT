@@ -25,7 +25,12 @@ export class ProductDetailsComponent implements OnInit {
         this.dataSrv.getProductById(id).subscribe(
             (product) => {
                 this.product = product;
-                this.founded = true;
+                if (this.product === undefined) {
+                    this.router.navigate(['/**']);
+                    this.founded = false;
+                } else {
+                    this.founded = true;
+                }
             },
             (error) => this.router.navigate(['/**'])
         );
