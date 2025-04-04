@@ -45,6 +45,6 @@ export class SignalsDemoService {
     }
 
     getCounter() {
-        return this.counterSignal;
+        return this.counter$;
     }
 }
