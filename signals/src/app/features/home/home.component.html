@@ -1,0 +1,48 @@
+<section class="home-container">
+    <div class="hero-section">
+        <h1>Benvenuto a SignalShop</h1>
+        <p>La tua app dimostrativa delle potenzialità dei Signals in Angular 18</p>
+        <div class="cta-button">
+            <a routerLink="/products" class="btn">Esplora Prodotti</a>
+        </div>
+    </div>
+
+    <div class="features-section">
+        <h2>Scopri le potenzialità dei Signals</h2>
+        <div class="feature-cards">
+            <div class="feature-card">
+                <h3>Stato Reattivo</h3>
+                <p>Gestire lo stato dell'applicazione in modo reattivo</p>
+            </div>
+            <div class="feature-card">
+                <h3>Performance Ottimizzate</h3>
+                <p>Aggiornamenti UI più efficienti rispetto a RxJS</p>
+            </div>
+            <div class="feature-card">
+                <h3>Integrazione Seamless</h3>
+                <p>Perfetta integrazione con i componenti Angular</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>Demo Signals vs RxJS</h2>
+        <div class="demo-container">
+            <div class="demo-card">
+                <h3>Signal Counter</h3>
+                <p>Counter: {{ counter() }}</p>
+                <p>Doubled: {{ dblCounter() }}</p>
+                <div class="counter-controls">
+                    <button (click)="decrementCounter()">-</button>
+                    <button (click)="incrementCounter()">+</button>
+                    <button (click)="resetCounter()">Reset</button>
+                </div>
+            </div>
+
+            <div class="demo-card">
+                <h3>RxJS to Signal</h3>
+                <p>{{ timer() }}</p>
+            </div>
+        </div>
+    </div>
+</section>

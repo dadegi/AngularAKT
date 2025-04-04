@@ -1,0 +1,16 @@
+<header class="header">
+    <div class="logo">
+        <h1>SignalShop</h1>
+    </div>
+    <nav class="nav">
+        <ul>
+            <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+            <li><a routerLink="/products" routerLinkActive="active">Prodotti</a></li>
+            <li><a routerLink="/cart" routerLinkActive="active">
+                    Carrello <span class="cart-badge" *ngIf="cartCount() > 0">{{ cartCount() }}</span>
+                </a></li>
+            <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+            <li><a routerLink="/contact" routerLinkActive="active">Contatti</a></li>
+        </ul>
+    </nav>
+</header>
