@@ -1,1 +1,16 @@
-<p>product-list works!</p>
+<section class="products-container">
+    <div class="filters">
+        <h2>Filtri</h2>
+        <div class="category-filter">
+            <select [(ngModel)]="selectedCategory" (change)="filterByCategory(selectedCategory)" class="filter-select">
+                <option [value]="null" selected>Tutte le categorie</option>
+                <option *ngFor="let category of categories()" [value]="category">{{ category | titlecase }}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="products-grid">
+        <app-product-card *ngFor="let product of products()" [product]="product"
+            (addToCart)="addToCart($event)"></app-product-card>
+    </div>
+</section>

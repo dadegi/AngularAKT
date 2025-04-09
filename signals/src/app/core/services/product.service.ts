@@ -68,12 +68,9 @@ export class ProductService {
     }
 
     getProductById(id: number) {
-        return computed(() => {
-            return (
-                this.productSignal().find((product) => product.id === id) ||
-                null
-            );
-        });
+        return (
+            this.productSignal().find((product) => product.id === id) || null
+        );
     }
 
     // Popolamento del selectedCategorySignal

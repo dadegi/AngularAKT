@@ -1,1 +1,37 @@
-<p>product-detail works!</p>
+<div class="product-detail-container" *ngIf="product() !== null; else loading">
+    <div class="product-image">
+        <img [src]="product()?.imageUrl" [alt]="product()?.name">
+    </div>
+
+    <div class="product-info">
+        <h1>{{ product()?.name }}</h1>
+        <p class="product-category">Categoria: {{ product()?.category }}</p>
+        <div class="product-price" appHighlight="rgba(52, 152, 219, 0.2)">
+            € {{ product()?.price!.toFixed(2) }}
+        </div>
+
+        <div class="product-description">
+            <h3>Descrizione</h3>
+            <p>{{ product()?.description }}</p>
+        </div>
+
+        <div class="quantity-control">
+            <label for="quantity">Quantità:</label>
+            <div class="quantity-buttons">
+                <button (click)="decrementQuantity()">-</button>
+                <input type="number" [(ngModel)]="quantity" min="1" max="10">
+                <button (click)="incrementQuantity()">+</button>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn-add-to-cart" (click)="addToCart()">
+                Aggiungi al carrello
+            </button>
+        </div>
+    </div>
+</div>
+
+<ng-template #loading>
+    <div class="loading">Caricamento prodotto...</div>
+</ng-template>
